@@ -56,6 +56,7 @@ extern "C" void realm_jsi_init(fbjsi::Runtime& rt, fbjsi::Object& exports, std::
 extern "C" void realm_jsi_invalidate_caches()
 {
     // Close all cached Realms
+    realm::util::Logger::set_default_level_threshold(realm::util::Logger::Level::off);
     realm::_impl::RealmCoordinator::clear_all_caches();
     // Clear the Object Store App cache, to prevent instances from using a context that was released
     realm::app::App::clear_cached_apps();
